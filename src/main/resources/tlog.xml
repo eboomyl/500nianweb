@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<metalib name="Log">
+ 	<!-- 用户表 -->
+    <struct name="userinfo" id="" class="用户信息表" class_no="1" class_sn="3" desc="用户信息表">
+        <entry name="id" type="string" size="60" desc="id"/>
+        <entry name="username" type="string" size="60" desc="用户名"/>
+        <entry name="userpwd" type="string" size="60" desc="用户密码"/>
+        <entry name="userequ1" type="string" size="60" desc="设备号1"/>
+        <entry name="userequ2" type="string" size="60" desc="设备号2"/>
+        <entry name="userphone" type="string" size="60" desc="用户手机号码"/>
+        <entry name="usernick" type="string" size="60" desc="号-传说中的昵称"/>
+        <entry name="usercard" type="string" size="60" desc="证件号"/>
+        <entry name="userstatus" type="string" size="60" desc="用户状态"/>
+        <entry name="istrue" type="string" size="1" desc="是否认证过"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+
+ 	 <!-- 用户物品分类表 -->
+    <struct name="souvenirtype" id="" class="物品分类表" class_no="1" class_sn="3" desc="物品分类表">
+        <entry name="id" type="string" size="60" desc="id"/>
+        <entry name="userid" type="string" size="60" desc="用户id"/>
+        <entry name="typesort" type="string" size="60" desc="类型序号"/><!-- 0是未分类，从1开始计算 -->
+        <entry name="typename" type="string" size="60" desc="分类名称"/>
+        <entry name="typecount" type="string" size="60" desc="分类名称"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+
+    <!-- 物品表  -->
+    <struct name="souvenir" id="" class="物品表" class_no="1" class_sn="3" desc="物品基础信息表">
+        <entry name="id" type="string" size="60" desc="物品id"/>
+        <entry name="name" type="string" size="60" desc="物品名称"/>
+        <entry name="souvenirtypeid" type="string" size="60" desc="物品分类id"/>
+        <entry name="souvenirtypecode" type="string" size="60" desc="物品在分类里面的编码"/>
+        <entry name="userid" type="string" size="10" desc="物品当前拥有人id"/>
+        <entry name="dynastycode" type="string" size="60" desc="年代编码"/>
+        <entry name="lengths" type="string" size="10" desc="物品主图片编号"/>
+        <entry name="wides" type="string" size="10" desc="物品主图片编号"/>
+        <entry name="highs" type="string" size="10" desc="物品主图片编号"/>
+        <entry name="weights" type="string" size="10" desc="物品主图片编号"/>
+        <entry name="flowstatus" type="string" size="10" desc="物品流转状态"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+    
+       <!-- 物品图片对应表  -->
+    <struct name="image" id="" class="物品图片" class_no="1" class_sn="3" desc="物品图片表">
+        <entry name="id" type="string" size="60" desc="图片id"/>
+        <entry name="souvenirid" type="string" size="60" desc="物品id"/>
+        <entry name="imagecode" type="string" size="200" desc="图片路径"/>
+        <entry name="imagesort" type="string" size="200" desc="图片录入顺序"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+    
+    
+       <!-- 拥有物品表  -->
+    <struct name="own" id="" class="物品表" class_no="1" class_sn="3" desc="物品基础信息表">
+        <entry name="id" type="string" size="60" desc="物品id"/>
+        <entry name="souvenirid" type="string" size="60" desc="物品id"/>
+        <entry name="userid" type="string" size="60" desc="用户id"/>
+        <entry name="isown" type="string" size="1" desc="是否当前拥有"/>
+         <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>     
+    </struct>
+
+    
+     <!-- 物品描述表 -->
+    <struct name="recordinfo" id="" class="系统记录" class_no="1" class_sn="3" desc="物品图片表">
+        <entry name="id" type="string" size="60" desc="评论id"/>
+        <entry name="souvenirid" type="string" size="60" desc="物品id"/>
+        <entry name="title" type="string" size="200" desc="物品评论标题可以无限增加标题个数"/>
+        <entry name="content" type="string" size="200" desc="评论内容限定200个字"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+    
+    
+    
+    
+  
+    
+      <!-- 物品发布表 指定用户或者组织机构让其可以看见该物品的权限  -->
+    <struct name="publish" id="" class="发布表" class_no="1" class_sn="3" desc="发布表">
+        <entry name="id" type="string" size="60" desc="物品id"/>
+        <entry name="souvenirid" type="string" size="60" desc="物品id"/>
+        <entry name="userid" type="string" size="60" desc="指定某些用户查看权限，该用户有发私信的权限"/>
+        <entry name="orgid" type="string" size="60" desc="指定某些用户查看权限，该用户有发私信的权限"/>
+        <entry name="isall" type="string" size="1" desc="是否广场发布"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>     
+    </struct>
+    
+    
+  
+    
+     <!-- 物品时间表，查看谁拥有过，最后一个拥有者是谁 -->
+    <struct name="timeriver" id="" class="系统记录" class_no="1" class_sn="3" desc="物品图片表">
+        <entry name="id" type="string" size="60" desc="评论id"/>
+        <entry name="souvenirid" type="string" size="60" desc="物品id"/>
+        <entry name="userid" type="string" size="60" desc="物品评论标题"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+  		<entry name="sort" type="string" size="2" desc="排序用"/> 
+    </struct>
+    
+     <!-- 物品标签表 -->
+    <struct name="souvenirtag" id="" class="系统记录" class_no="1" class_sn="3" desc="物品图片表">
+        <entry name="id" type="string" size="60" desc="id"/>
+        <entry name="souvenirid" type="string" size="60" desc="物品id"/>
+        <entry name="tagid" type="string" size="60" desc="标签名称"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+    
+      <!-- 标签库表 -->
+    <struct name="tag" id="" class="标签库" class_no="1" class_sn="3" desc="标签库">
+        <entry name="id" type="string" size="60" desc="id"/>
+        <entry name="tagname" type="string" size="60" desc="物品id"/>
+        <entry name="tagdec" type="string" size="60" desc="标签名称"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+    
+   
+    
+    
+    <!-- 好友表 -->
+    <struct name="friend" id="" class="用户信息表" class_no="1" class_sn="3" desc="用户信息表">
+        <entry name="id" type="string" size="60" desc="id"/>
+        <entry name="userid" type="string" size="60" desc="用户名"/>
+        <entry name="frienduserid" type="string" size="60" desc="好友的用户id"/>
+        <entry name="circle" type="string" size="60" desc="朋友圈-类似朋友类型"/>
+        <entry name="mark" type="string" size="1" desc="备注"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+    
+    <!-- 组织机构表 -->
+    <struct name="organization" id="" class="组织机构表" class_no="1" class_sn="3" desc="组织机构表">
+        <entry name="id" type="string" size="60" desc="id"/>
+        <entry name="orgname" type="string" size="60" desc="组织机构名"/>
+        <entry name="orgnick" type="string" size="60" desc="组织机构别名"/>
+        <entry name="orgcard" type="string" size="60" desc="证件号"/>
+        <entry name="istrue" type="string" size="1" desc="是否认证过"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+     
+    <!-- 用户关注组织机构关系 -->
+    <struct name="attention" id="" class="用户关注组织机构关系表" class_no="1" class_sn="3" desc="用户关注组织机构关系表">
+        <entry name="id" type="string" size="60" desc="id"/>
+        <entry name="userid" type="string" size="60" desc="用户名"/>
+        <entry name="orgid" type="string" size="60" desc="好友的用户id"/>
+        <entry name="circle" type="string" size="60" desc="圈子-类似朋友类型"/>
+        <entry name="mark" type="string" size="1" desc="备注"/>
+        <entry name="timerecord" type="datetime" size="60" desc="记录时间, 格式 YYYY-MM-DD HH:MM:SS"/>
+    </struct>
+    
+
+</metalib>
